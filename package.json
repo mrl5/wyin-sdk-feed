@@ -3,7 +3,7 @@
   "author": "spio wyin team",
   "homepage": "https://app.spio-wyin.workers.dev/",
   "version": "0.0.1",
-
+  "license": "MPL-2.0",
   "description": "SDK for serving historical events under WYIN project",
   "keywords": [
     "wyin",

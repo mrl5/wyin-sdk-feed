@@ -1,0 +1,5 @@
+# IDE specific
+*.swp
+
+# project specific
+node_modules

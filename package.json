@@ -1,0 +1,28 @@
+{
+  "name": "wyin-sdk-feed",
+  "author": "spio wyin team",
+  "homepage": "https://app.spio-wyin.workers.dev/",
+  "version": "0.0.1",
+
+  "description": "SDK for serving historical events under WYIN project",
+  "keywords": [
+    "wyin",
+    "spio",
+    "sdk",
+    "feed"
+  ],
+  "bugs": {
+    "url": "https://gitlab.com/spio-wyin/wyin-sdk-feed/-/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/spio-wyin/wyin-sdk-feed.git"
+  },
+  "engines": {
+    "node": ">=14",
+    "yarn": "^1.22.5"
+  },
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}

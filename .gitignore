@@ -2,4 +2,6 @@
 *.swp
 
 # project specific
+dist
 node_modules
+yarn-error.log

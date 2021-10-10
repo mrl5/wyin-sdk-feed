@@ -8,6 +8,7 @@ under [WYIN project].
 * [Motivation](#motivation)
 * [Overview](#overview)
 * [Solution proposed by this project](#solution-proposed-by-this-project)
+* [I want to contribute](#i-want-to-contribute)
 
 
 ## Motivation
@@ -45,6 +46,9 @@ By doing this `P1`, `P2` are kept, `C3`, `C4` are no longer present and `C1`,
 `C2` stay on minimal level. Additional benefit is code reusability - the very
 same `SDK` can be used on `client` side or used as handler logic for REST API.
 
+
+## I want to contribute
+Check out [CONTRIBUTING](CONTRIBUTING.md)
 
 
 

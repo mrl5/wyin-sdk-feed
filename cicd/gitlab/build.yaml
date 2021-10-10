@@ -1,0 +1,8 @@
+stages:
+  - build
+
+build_dist:
+  stage: build
+  needs: [lint, unit_test]
+  script:
+    - yarn run build

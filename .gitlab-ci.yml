@@ -1,0 +1,29 @@
+default:
+  image: node:14
+
+cache:
+  paths:
+    - dist
+    - node_modules
+
+stages:
+  - test
+  - build
+
+install_deps:
+  stage: .pre
+  before_script:
+    - node --version
+    - yarn --version
+  script:
+    - yarn install --frozen-lockfile
+
+include:
+  - local: '/cicd/gitlab/test.yaml'
+  - local: '/cicd/gitlab/build.yaml'
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Dependency-Scanning.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
+
+semgrep-sast:
+    cache: {}

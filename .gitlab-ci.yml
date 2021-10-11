@@ -1,17 +1,15 @@
 default:
   image: node:14
 
-cache:
-  paths:
-    - dist
-    - node_modules
-
 stages:
   - test
   - build
 
 install_deps:
   stage: .pre
+  cache:
+    paths:
+      - node_modules
   before_script:
     - node --version
     - yarn --version
@@ -24,6 +22,3 @@ include:
   - template: Security/SAST.gitlab-ci.yml
   - template: Security/Dependency-Scanning.gitlab-ci.yml
   - template: Security/Secret-Detection.gitlab-ci.yml
-
-semgrep-sast:
-    cache: {}

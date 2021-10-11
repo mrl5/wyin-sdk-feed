@@ -1,6 +1,10 @@
 stages:
   - test
 
+cache:
+  paths:
+    - node_modules
+
 lint:
   stage: test
   needs: [install_deps]

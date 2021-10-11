@@ -10,7 +10,7 @@ interpreted as described in [RFC 2119].
 
 ## Table of contents
 * [HOWTO contribute](#howto-contribute)
-* [Proper commit message](#proper-commit-message)
+* [Commit Message Format](#commit-message-format)
 * [Installing requirements](#installing-requirements)
 
 
@@ -23,17 +23,21 @@ interpreted as described in [RFC 2119].
    message.
 6. To submit a patch, the commit message redacted by a Contributor SHOULD be
    compliant with [Conventional Commits
-   specification]
+   specification].
 
 (this section was inspired by [ZMQ C4] contract)
 
 
-## Proper commit message
+## Commit Message Format
 We stick to [Conventional Commits specification] because [`yarn` generates a
 changelog from git commits](https://yarnpkg.com/package/generate-changelog).
 
-If you need examples check [commits on master branch]. If this is still not
-enough you can also check [Angular guidelines].
+Here is a [list of valid
+types](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional#type-enum)
+and [user friendly description from
+Angular](https://github.com/angular/angular/blob/7aea5256de55056e424f9c6d92ac1d6f38d3abee/CONTRIBUTING.md#commit-message-header).
+
+If you need more examples check [commits on master branch].
 
 
 ## Installing requirements
@@ -47,6 +51,5 @@ yarn install
 [RFC 2119]: https://datatracker.ietf.org/doc/html/rfc2119
 [the issue tracker]: https://gitlab.com/spio-wyin/wyin-sdk-feed/-/issues
 [Conventional Commits specification]: https://www.conventionalcommits.org/en/v1.0.0-beta.2/
-[Angular guidelines]: https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines
 [ZMQ C4]: https://rfc.zeromq.org/spec/42/
 [commits on master branch]: https://gitlab.com/spio-wyin/wyin-sdk-feed/-/commits/master

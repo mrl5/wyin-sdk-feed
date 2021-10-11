@@ -1,0 +1,19 @@
+stages:
+  - test
+
+lint:
+  stage: test
+  needs: [install_deps]
+  script:
+    - yarn run lint
+
+unit_test:
+  stage: test
+  needs: [install_deps]
+  script:
+    - yarn run test:unit:cicd
+  artifacts:
+    when: always
+    reports:
+      cobertura: './tests_artifacts/cobertura-coverage.xml'
+      junit: './tests_artifacts/junit_report.xml'

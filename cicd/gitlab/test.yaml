@@ -1,19 +1,21 @@
 stages:
   - test
 
-cache:
-  paths:
-    - node_modules
-
 lint:
   stage: test
   needs: [install_deps]
+  cache:
+    paths:
+      - node_modules
   script:
     - yarn run lint
 
 unit_test:
   stage: test
   needs: [install_deps]
+  cache:
+    paths:
+      - node_modules
   script:
     - yarn run test:unit:cicd
   artifacts:

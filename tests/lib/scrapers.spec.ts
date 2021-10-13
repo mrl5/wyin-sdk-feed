@@ -1,7 +1,7 @@
 import * as chai from 'chai';
 import chaiAsPromised = require('chai-as-promised');
 import { NoContentError } from '../../src/errors';
-import { getYearEventFromCenturyPage, getRandomEventFromYearPage } from '../../src/utils/scrapers';
+import { getYearEventFromCenturyPage, getRandomEventFromYearPage } from '../../src/lib/scrapers';
 import { Year, Html, ScrappedData } from '../../src/types';
 import { getHtmlMock } from '../testUtils';
 

@@ -1,4 +1,5 @@
 export type Year = number;
+export type Century = string;
 export type Html = string;
 export type ScrappedData = {
     event: string;

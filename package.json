@@ -32,8 +32,10 @@
     "test:unit:cicd": "nyc mocha --reporter=mocha-junit-reporter --reporter-options mochaFile='./tests_artifacts/junit_report.xml'"
   },
   "dependencies": {
+    "@types/romans": "2.0.0",
     "axios": "^0.23.0",
     "cheerio": "^1.0.0-rc.10",
+    "romans": "2.0.3",
     "ts-custom-error": "^3.2.0"
   },
   "devDependencies": {
@@ -50,6 +52,7 @@
     "@types/pollyjs__adapter-node-http": "^2.0.1",
     "@types/pollyjs__core": "^4.3.3",
     "@types/pollyjs__persister-fs": "^2.0.1",
+    "@types/sinon": "^10.0.4",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
     "chai": "^4.3.4",
@@ -62,6 +65,7 @@
     "mocha-junit-reporter": "^2.0.2",
     "nyc": "^15.1.0",
     "prettier": "^2.4.1",
+    "sinon": "^11.1.2",
     "source-map-support": "^0.5.20",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"

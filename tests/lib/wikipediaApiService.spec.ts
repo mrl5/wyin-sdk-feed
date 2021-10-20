@@ -14,23 +14,23 @@ const { expect } = chai;
 type Title = string;
 type QueryTestCase = [Language, Title];
 
-describe('wikipediaApi', function () {
-    describe('query()', function () {
-        // eslint-disable-next-line mocha/no-hooks-for-single-case
-        before(function () {
-            Polly.register(NodeHttpAdapter);
-            Polly.register(FSPersister);
-            setupPolly({
-                adapters: ['node-http'],
-                persister: 'fs',
-                persisterOptions: {
-                    fs: {
-                        recordingsDir: path.resolve(__dirname, '../mocks/recordings'),
-                    },
-                },
-            });
-        });
+Polly.register(NodeHttpAdapter);
+Polly.register(FSPersister);
 
+describe('wikipediaApiService', function () {
+    /* eslint-disable mocha/no-setup-in-describe */
+    setupPolly({
+        adapters: ['node-http'],
+        persister: 'fs',
+        persisterOptions: {
+            fs: {
+                recordingsDir: path.resolve(__dirname, '../mocks/recordings'),
+            },
+        },
+    });
+    /* eslint-enable mocha/no-setup-in-describe */
+
+    describe('query()', function () {
         const queries: Array<QueryTestCase> = [
             ['en', '1st century'],
             ['pl', 'I wiek'],

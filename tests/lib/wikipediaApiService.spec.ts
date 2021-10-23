@@ -4,8 +4,7 @@ import chaiAsPromised = require('chai-as-promised');
 import { Polly, setupMocha as setupPolly } from '@pollyjs/core';
 import FSPersister from '@pollyjs/persister-fs';
 import NodeHttpAdapter from '@pollyjs/adapter-node-http';
-import { query } from '../../src/lib/wikipediaApiService';
-import { WikipediaApiQuery } from '../../src/lib/wikipediaApi';
+import { query, getWikiPageContent } from '../../src/lib/wikipediaApiService';
 import { Language } from '../../src/types';
 
 chai.use(chaiAsPromised);
@@ -41,15 +40,14 @@ describe('wikipediaApiService', function () {
         queries.forEach((testCase) => {
             it(`should respond with 200 and have expected structure: case for ${testCase}`, async function () {
                 const [lang, title] = testCase;
-                const response = await query(title, lang);
-                const data = response.data as WikipediaApiQuery;
-
-                expect(response.status).to.equal(200);
+                const data = await query(title, lang);
 
                 const [pageId] = Object.keys(data.query.pages);
                 const page = data.query.pages[pageId];
                 expect(page).to.have.property('title', title);
-                expect(page.extract).to.be.a('string').and.length.above(0);
+
+                const content = getWikiPageContent(data);
+                expect(content).to.be.a('string').and.length.above(0);
             });
         });
     });

@@ -5,4 +5,7 @@ module.exports = {
         sourceType: 'module',
     },
     extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended', 'plugin:mocha/recommended'],
+    rules: {
+        camelcase: 2,
+    },
 };

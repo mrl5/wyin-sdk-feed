@@ -1,8 +1,8 @@
-import get, { AxiosResponse } from 'axios';
+import get from 'axios';
 import { Language } from '../types';
 import { WikipediaApiQuery } from './wikipediaApi';
 
-export async function query(title: string, lang: Language): Promise<AxiosResponse> {
+export async function query(title: string, lang: Language): Promise<WikipediaApiQuery> {
     const params = new URLSearchParams({
         action: 'query',
         prop: 'extracts',
@@ -10,10 +10,11 @@ export async function query(title: string, lang: Language): Promise<AxiosRespons
         titles: title,
     });
     const url = new URL(`https://${lang}.wikipedia.org/w/api.php?${params.toString()}`);
-    return get(url.toString());
+    const resp = await get(url.toString());
+    return resp.data as WikipediaApiQuery;
 }
 
-export function get_wiki_page_content(data: WikipediaApiQuery): string {
+export function getWikiPageContent(data: WikipediaApiQuery): string {
     const [pageId] = Object.keys(data.query.pages);
     return data.query.pages[pageId].extract;
 }

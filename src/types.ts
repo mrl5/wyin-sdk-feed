@@ -1,3 +1,4 @@
+export type Time = string;
 export type Year = number;
 export type Century = string;
 export type Html = string;

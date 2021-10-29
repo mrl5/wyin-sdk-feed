@@ -1,7 +1,7 @@
 import * as chai from 'chai';
 import chaiAsPromised = require('chai-as-promised');
 import * as sinon from 'sinon';
-import { Year, Century } from '../../src/types';
+import { Time, Year, Century } from '../../src/types';
 import { convertTimeToYear, convertYearToCentury } from '../../src/lib/converters';
 import { WyinFeedError, FutureYearError, BeforeCommonEraError } from '../../src/errors';
 
@@ -9,7 +9,7 @@ chai.use(chaiAsPromised);
 const { assert } = chai;
 const sandbox = sinon.createSandbox();
 
-type TimeToYearTestCase = [string, Year];
+type TimeToYearTestCase = [Time, Year];
 type YearToCenturyTestCase = [Year, Century];
 
 describe('converters.ts', function () {

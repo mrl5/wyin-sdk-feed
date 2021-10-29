@@ -2,7 +2,7 @@
   "name": "wyin-sdk-feed",
   "author": "spio wyin team",
   "homepage": "https://app.spio-wyin.workers.dev/",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MPL-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

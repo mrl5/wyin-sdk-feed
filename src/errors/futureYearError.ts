@@ -1,3 +1,7 @@
-import { WyinFeedError } from './baseError';
+import { NotFoundError } from './notFoundError';
 
-export class FutureYearError extends WyinFeedError {}
+export class FutureYearError extends NotFoundError {
+    public constructor(message?: string) {
+        super('NF001', message);
+    }
+}

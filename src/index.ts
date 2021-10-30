@@ -24,8 +24,9 @@ export async function getEventByYear(year: Year, lang: Language): Promise<Respon
     try {
         const titles = await getWikipediaTitlesForCenturyAndYear(year, lang);
         const [centuryTitle, yearTitle] = titles;
-        const [centuryResp, yearResp] = await Promise.all([query(centuryTitle, lang), query(yearTitle, lang)]);
-        const { data, category, source } = getHistoricalEvent(year, centuryResp, yearResp, titles, lang);
+        const centuryResp = query(centuryTitle, lang);
+        const yearResp = query(yearTitle, lang);
+        const { data, category, source } = await getHistoricalEvent(year, centuryResp, yearResp, titles, lang);
         return {
             year,
             data,
@@ -44,15 +45,15 @@ export async function getEventByYear(year: Year, lang: Language): Promise<Respon
     }
 }
 
-function getHistoricalEvent(
+async function getHistoricalEvent(
     year: Year,
-    centuryResp: WikipediaApiQuery,
-    yearResp: WikipediaApiQuery,
+    centuryResp: Promise<WikipediaApiQuery>,
+    yearResp: Promise<WikipediaApiQuery>,
     titles: CenturyAndYearTitles,
     lang: Language,
 ) {
     const [centuryTitle, yearTitle] = titles;
-    let html = getWikiPageContent(centuryResp);
+    let html = getWikiPageContent(await centuryResp);
     let data = getYearEventFromCenturyPage(year, html);
     if (data) {
         return {
@@ -62,7 +63,7 @@ function getHistoricalEvent(
         };
     }
 
-    html = getWikiPageContent(yearResp);
+    html = getWikiPageContent(await yearResp);
     data = getRandomEventFromYearPage(html);
     return {
         data: data?.event || '',

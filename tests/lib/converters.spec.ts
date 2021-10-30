@@ -61,6 +61,7 @@ describe('converters.ts', function () {
             [1001, 'XI'],
             [813, 'IX'],
             [1, 'I'],
+            [33, 'I'],
         ];
         // eslint-disable-next-line mocha/no-setup-in-describe
         yearToCenturyTestCase.forEach((testCase) => {

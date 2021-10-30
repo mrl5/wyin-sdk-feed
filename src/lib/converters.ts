@@ -27,7 +27,7 @@ function throwOnInvalidYear(year: Year): void {
         throw new WyinFeedError('given year is not an integer');
     }
 
-    if (Date.parse(String(year)) > Date.now()) {
+    if (year > new Date(Date.now()).getFullYear()) {
         throw new FutureYearError('given year is from future');
     }
 

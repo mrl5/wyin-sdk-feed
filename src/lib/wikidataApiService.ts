@@ -1,4 +1,4 @@
-import get, { AxiosResponse } from 'axios';
+import { client, ClientResponse } from './httpClient';
 import { Century, Year, Language } from '../types';
 import { convertYearToCentury } from './converters';
 import {
@@ -26,10 +26,10 @@ export async function getWikipediaTitlesForCenturyAndYear(year: Year, lang: Lang
 }
 
 type WikidataApiParams = WikidataApiWbSearchEntitiesParams | WikidataApiWbGetEntitiesParams;
-async function query(params: WikidataApiParams): Promise<AxiosResponse> {
-    const p = new URLSearchParams({ ...params });
+async function query(params: WikidataApiParams): Promise<ClientResponse> {
+    const p = new URLSearchParams({ ...params, origin: '*' });
     const url = new URL(`https://www.wikidata.org/w/api.php?${p.toString()}`);
-    return get(url.toString());
+    return client.get(url.toString());
 }
 
 async function querySearchEntities(keyword: string, lang: Language): Promise<WikidataApiWbSearchEntities> {

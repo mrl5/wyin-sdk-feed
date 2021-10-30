@@ -23,8 +23,8 @@ function throwOnInvalidTime(time: Time): void {
 }
 
 function throwOnInvalidYear(year: Year): void {
-    if (Number.isNaN(year)) {
-        throw new WyinFeedError('given year is not a number');
+    if (!Number.isInteger(year)) {
+        throw new WyinFeedError('given year is not an integer');
     }
 
     if (Date.parse(String(year)) > Date.now()) {

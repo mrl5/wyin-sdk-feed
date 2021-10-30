@@ -76,9 +76,13 @@ describe('converters.ts', function () {
             assert.throws(fn, BeforeCommonEraError);
         });
 
-        it('should throw on invalid year', function () {
-            const fn = () => convertYearToCentury(-1);
-            assert.throws(fn, WyinFeedError);
+        const invalidYearTestCase: Array<Year> = [-1, 1.1];
+        // eslint-disable-next-line mocha/no-setup-in-describe
+        invalidYearTestCase.forEach((testCase) => {
+            it('should throw on invalid year', function () {
+                const fn = () => convertYearToCentury(testCase);
+                assert.throws(fn, WyinFeedError);
+            });
         });
     });
 });

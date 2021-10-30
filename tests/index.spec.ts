@@ -5,8 +5,8 @@ import * as sinon from 'sinon';
 import { Polly, setupMocha as setupPolly } from '@pollyjs/core';
 import FSPersister from '@pollyjs/persister-fs';
 import NodeHttpAdapter from '@pollyjs/adapter-node-http';
-import { getEventByYear } from '../src/index';
-import { Year, Language } from '../src/types';
+import { getEventByYear, getEventByTime } from '../src/index';
+import { Year, Language, Time } from '../src/types';
 import { NotFoundCodeEnum } from '../src/contracts/notFound';
 
 chai.use(chaiAsPromised);
@@ -16,7 +16,8 @@ const sandbox = sinon.createSandbox();
 Polly.register(NodeHttpAdapter);
 Polly.register(FSPersister);
 
-type NotFoundTestCase = [Year, Language, NotFoundCodeEnum];
+type NotFoundTestCaseByYear = [Year, Language, NotFoundCodeEnum];
+type NotFoundTestCaseByTime = [Time, Language, NotFoundCodeEnum];
 
 describe('index.ts', function () {
     /* eslint-disable mocha/no-setup-in-describe */
@@ -57,7 +58,7 @@ describe('index.ts', function () {
             expect(result.source).to.equal(expectedSource);
         });
 
-        const testCases: Array<NotFoundTestCase> = [
+        const testCases: Array<NotFoundTestCaseByYear> = [
             [57, 'pl', 'NF003'],
             [0, 'pl', 'NF002'],
             [2022, 'pl', 'NF001'],
@@ -70,6 +71,26 @@ describe('index.ts', function () {
                 const result = await getEventByYear(year, lang);
 
                 assert.strictEqual(result.year, year);
+                assert.strictEqual(result.code, expectedCode);
+                sandbox.restore();
+            });
+        });
+    });
+
+    describe('getEventByTime()', function () {
+        const testCases: Array<NotFoundTestCaseByTime> = [
+            ['0:57', 'pl', 'NF003'],
+            ['0:00', 'pl', 'NF002'],
+            ['20:22', 'pl', 'NF001'],
+        ];
+        // eslint-disable-next-line mocha/no-setup-in-describe
+        testCases.forEach((testCase) => {
+            it('should return not found object with proper code', async function () {
+                sandbox.replace(Date, 'now', sinon.fake.returns(Date.parse('2021')));
+                const [time, lang, expectedCode] = testCase;
+                const result = await getEventByTime(time, lang);
+
+                assert.strictEqual(typeof result.year, 'number');
                 assert.strictEqual(result.code, expectedCode);
                 sandbox.restore();
             });

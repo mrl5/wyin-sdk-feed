@@ -8,19 +8,19 @@ import { WikipediaApiQuery } from './lib/wikipediaApi';
 import { query, getWikiPageContent } from './lib/wikipediaApiService';
 import { getYearEventFromCenturyPage, getRandomEventFromYearPage } from './lib/scrapers';
 
-type Response = Promise<SingleHistoryEventModel | NotFoundModel>;
+type Response = SingleHistoryEventModel | NotFoundModel;
 
-export async function getEventByTime(time: Time, lang: Language): Response {
+export async function getEventByTime(time: Time, lang: Language): Promise<Response> {
     const year = convertTimeToYear(time);
     return getEventByYear(year, lang);
 }
 
-export async function getEventByRandom(lang: Language): Response {
+export async function getEventByRandom(lang: Language): Promise<Response> {
     const year = getRandomYear();
     return getEventByYear(year, lang);
 }
 
-export async function getEventByYear(year: Year, lang: Language): Response {
+export async function getEventByYear(year: Year, lang: Language): Promise<Response> {
     try {
         const titles = await getWikipediaTitlesForCenturyAndYear(year, lang);
         const [centuryTitle, yearTitle] = titles;

@@ -26,6 +26,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --fix",
     "test": "yarn run test:unit",
     "test:unit": "nyc --reporter=text mocha",
@@ -57,6 +58,7 @@
     "@typescript-eslint/parser": "^4.31.2",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
+    "conventional-changelog-cli": "^2.1.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-mocha": "^9.0.0",

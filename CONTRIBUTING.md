@@ -29,8 +29,8 @@ interpreted as described in [RFC 2119].
 
 
 ## Commit Message Format
-We stick to [Conventional Commits specification] because [`yarn` generates a
-changelog from git commits](https://yarnpkg.com/package/generate-changelog).
+We stick to [Conventional Commits specification] i.a. to generate changelog
+automatically.
 
 Here is a [list of valid
 types](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional#type-enum)

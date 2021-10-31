@@ -5,7 +5,6 @@ import { WyinFeedError, FutureYearError, BeforeCommonEraError } from '../errors'
 export function convertTimeToYear(time: Time): Year {
     throwOnInvalidTime(time);
     const year = Number(time.replace(':', ''));
-    throwOnInvalidYear(year);
     return year;
 }
 

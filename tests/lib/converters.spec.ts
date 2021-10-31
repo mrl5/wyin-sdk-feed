@@ -36,22 +36,6 @@ describe('converters.ts', function () {
                 assert.throws(fn, WyinFeedError);
             });
         });
-
-        const futureYearTestCases: Array<string> = ['20:21', '20:22', '21:00'];
-        // eslint-disable-next-line mocha/no-setup-in-describe
-        futureYearTestCases.forEach((time) => {
-            it(`should throw on future year: case for time ${time}`, function () {
-                sandbox.replace(Date, 'now', sinon.fake.returns(Date.parse('2020')));
-                const fn = () => convertTimeToYear(time);
-                assert.throws(fn, FutureYearError);
-                sandbox.restore();
-            });
-        });
-
-        it('should throw on 00:00', function () {
-            const fn = () => convertTimeToYear('00:00');
-            assert.throws(fn, BeforeCommonEraError);
-        });
     });
 
     describe('convertYearToCentury()', function () {
@@ -69,6 +53,17 @@ describe('converters.ts', function () {
                 const [year, expected] = testCase;
                 const result = convertYearToCentury(year);
                 assert.strictEqual(result, expected);
+            });
+        });
+
+        const futureYearTestCases: Array<Year> = [2021, 2022, 2100];
+        // eslint-disable-next-line mocha/no-setup-in-describe
+        futureYearTestCases.forEach((year) => {
+            it(`should throw on future year: case for year ${year}`, function () {
+                sandbox.replace(Date, 'now', sinon.fake.returns(Date.parse('2020')));
+                const fn = () => convertYearToCentury(year);
+                assert.throws(fn, FutureYearError);
+                sandbox.restore();
             });
         });
 

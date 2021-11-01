@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": {
+    },
+    "definitions": {
+        "NotFoundCodeEnum": {
+            "enum": [
+                "NF001",
+                "NF002",
+                "NF003"
+            ],
+            "type": "string"
+        }
+    },
+    "properties": {
+        "body": {
+            "type": "string"
+        },
+        "code": {
+            "$ref": "#/definitions/NotFoundCodeEnum"
+        },
+        "year": {
+            "type": "number"
+        }
+    },
+    "required": [
+        "body",
+        "code",
+        "year"
+    ],
+    "type": "object"
+}
+

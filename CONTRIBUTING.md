@@ -45,7 +45,8 @@ Run
 ```bash
 yarn install
 ```
-
+This will also install all [git hooks](https://git-scm.com/docs/githooks) from
+`.githooks` directory
 
 
 [RFC 2119]: https://datatracker.ietf.org/doc/html/rfc2119

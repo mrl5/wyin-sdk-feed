@@ -25,8 +25,8 @@
     "yarn": "^1.22.5"
   },
   "scripts": {
-    "build": "tsc",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "build": "tsc --target es5",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --fix",
     "test": "yarn run test:unit",
     "test:unit": "nyc --reporter=text mocha",

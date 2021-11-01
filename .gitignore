@@ -2,6 +2,7 @@
 *.swp
 
 # project specific
+tsconfig.tsbuildinfo
 tests_artifacts
 dist
 node_modules

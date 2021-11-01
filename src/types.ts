@@ -1,3 +1,19 @@
+export interface SingleHistoryEvent {
+    year: Year;
+    data: string;
+    category?: string;
+    source: string;
+    [k: string]: unknown;
+}
+
+export interface NotFound {
+    year: Year;
+    body: string;
+    code: NotFoundCodeEnum;
+    [k: string]: unknown;
+}
+export type NotFoundCodeEnum = 'NF001' | 'NF002' | 'NF003';
+
 export type Time = string;
 export type Year = number;
 export type Century = string;

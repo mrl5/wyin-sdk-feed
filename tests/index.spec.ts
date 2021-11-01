@@ -7,7 +7,7 @@ import FSPersister from '@pollyjs/persister-fs';
 import NodeHttpAdapter from '@pollyjs/adapter-node-http';
 import { getEventByYear, getEventByTime } from '../src/index';
 import { Year, Language, Time } from '../src/types';
-import { NotFoundCodeEnum } from '../src/contracts/notFound';
+import { NotFoundCodeEnum } from '../src/types';
 
 chai.use(chaiAsPromised);
 const { assert, expect } = chai;

@@ -8,7 +8,7 @@ lint:
     paths:
       - node_modules
   script:
-    - yarn run lint
+    - yarn run lint:ci
 
 unit_test:
   stage: test

@@ -30,6 +30,7 @@
     "recommended-bump": "conventional-recommended-bump -p angular",
     "build": "tsc --target es5",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --fix",
+    "lint:ci": "eslint '*/**/*.{js,ts,tsx}' --max-warnings=0",
     "lint:commit": "commitlint",
     "test": "yarn run test:unit",
     "test:unit": "nyc --reporter=text mocha",

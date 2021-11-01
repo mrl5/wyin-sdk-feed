@@ -26,7 +26,8 @@
   },
   "scripts": {
     "prepare": "git config --local core.hooksPath .githooks || echo 'Could not set git hooks'",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "recommended-bump": "conventional-recommended-bump -p angular",
     "build": "tsc --target es5",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --fix",
     "lint:commit": "commitlint",
@@ -64,6 +65,7 @@
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "conventional-changelog-cli": "^2.1.1",
+    "conventional-recommended-bump": "^6.1.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-mocha": "^9.0.0",

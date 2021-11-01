@@ -1,6 +1,4 @@
-import { Language, Time, Year } from './types';
-import { SingleHistoryEventModel } from './contracts/singleHistoryEvent';
-import { NotFoundModel } from './contracts/notFound';
+import { Language, Time, Year, SingleHistoryEvent, NotFound } from './types';
 import { NotFoundError } from './errors';
 import { convertTimeToYear } from './lib/converters';
 import { CenturyAndYearTitles, getWikipediaTitlesForCenturyAndYear } from './lib/wikidataApiService';
@@ -8,7 +6,7 @@ import { WikipediaApiQuery } from './lib/wikipediaApi';
 import { query, getWikiPageContent } from './lib/wikipediaApiService';
 import { getYearEventFromCenturyPage, getRandomEventFromYearPage } from './lib/scrapers';
 
-type Response = SingleHistoryEventModel | NotFoundModel;
+type Response = SingleHistoryEvent | NotFound;
 
 export async function getEventByTime(time: Time, lang: Language): Promise<Response> {
     const year = convertTimeToYear(time);

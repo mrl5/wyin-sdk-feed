@@ -4,6 +4,7 @@
   "compilerOptions": {
     "lib": ["dom"],
     "outDir": "dist",
+    "rootDir": "src",
     "composite": true,
 
     "incremental": true,

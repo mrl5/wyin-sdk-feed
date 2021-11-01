@@ -1,12 +1,17 @@
 stages:
   - build
 
-cache:
-  paths:
-    - node_modules
-
 build_dist:
   stage: build
   needs: [lint, unit_test]
+  cache:
+    - key: $CI_COMMIT_REF_SLUG
+      paths:
+        - node_modules
+      policy: pull
+    - key: "$CI_PIPELINE_ID-dist"
+      paths:
+        - dist
+      policy: push
   script:
     - yarn run build

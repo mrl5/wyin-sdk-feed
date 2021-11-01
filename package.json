@@ -1,11 +1,14 @@
 {
-  "name": "wyin-sdk-feed",
+  "name": "@spio-wyin/wyin-sdk-feed",
   "author": "spio wyin team",
   "homepage": "https://app.spio-wyin.workers.dev/",
   "version": "0.1.0",
   "license": "MPL-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
   "description": "SDK for serving historical events under WYIN project",
   "keywords": [
     "wyin",
@@ -38,6 +41,7 @@
     "update-schemas": "./scripts/typescript-to-json-schema.sh"
   },
   "dependencies": {
+    "@types/cheerio": "^0.22.30",
     "@types/romans": "2.0.0",
     "axios": "^0.23.0",
     "cheerio": "^1.0.0-rc.10",
@@ -54,7 +58,6 @@
     "@tsconfig/node14": "^1.0.1",
     "@types/chai": "^4.2.22",
     "@types/chai-as-promised": "^7.1.4",
-    "@types/cheerio": "^0.22.30",
     "@types/mocha": "^9.0.0",
     "@types/node": "^14.14.31",
     "@types/pollyjs__adapter-node-http": "^2.0.1",

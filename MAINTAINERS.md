@@ -33,4 +33,4 @@ How it works:
 * finally it should push a new branch and a new tag
 
 3. Finally **you need to create a merge request** (from a branch that was created
-   and pushed by the script).
+   and pushed by the script) in order to update the [CHANGELOG](CHANGELOG.md).

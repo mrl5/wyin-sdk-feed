@@ -1,3 +1,20 @@
+## [0.1.1](https://gitlab.com/spio-wyin/wyin-sdk-feed/compare/v0.1.0...v0.1.1) (2021-11-03)
+
+
+### Bug Fixes
+
+* allow cross-site requests from the browser [[#11](https://gitlab.com/spio-wyin/wyin-sdk-feed/issues/11)] ([fbcf2d1](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/fbcf2d1bc67e761644dcd18f0b64841d361f42bc))
+* implement NotFoundModel schema to all SDK exposed functions [[#14](https://gitlab.com/spio-wyin/wyin-sdk-feed/issues/14)] ([64db602](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/64db602a233035a09619e60ad0ed415aba990a01))
+* improve condition for checking future year [[#15](https://gitlab.com/spio-wyin/wyin-sdk-feed/issues/15)] ([4c46bd2](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/4c46bd2c249d8652662908a1c93b24781e31d3dd))
+* improve year validation [[#12](https://gitlab.com/spio-wyin/wyin-sdk-feed/issues/12)] ([4458edb](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/4458edb70b365480b6e33a69d3c7601928e381d8))
+
+
+### Performance Improvements
+
+* wait only for century response [[#13](https://gitlab.com/spio-wyin/wyin-sdk-feed/issues/13)] ([31fbafd](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/31fbafd75303e6f0d92ca11fc6fb19fc51972848))
+
+
+
 # 0.1.0 (2021-10-29)
 
 

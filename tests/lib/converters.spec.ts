@@ -28,7 +28,7 @@ describe('converters.ts', function () {
             });
         });
 
-        const invalidTimeTestCases: Array<string> = ['24:21', '20:60', '8:10PM', '-8:23'];
+        const invalidTimeTestCases: Array<string> = ['24:21', '20:60', '8:10PM', '-8:23', '12:34:56'];
         // eslint-disable-next-line mocha/no-setup-in-describe
         invalidTimeTestCases.forEach((time) => {
             it(`should throw on invalid time: case for time ${time}`, function () {

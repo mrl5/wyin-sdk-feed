@@ -15,7 +15,7 @@ export function convertYearToCentury(year: Year): Century {
 }
 
 function throwOnInvalidTime(time: Time): void {
-    const timePattern = new RegExp('^([0-1]?[0-9]|2[0-3]):([0-5][0-9])(:[0-5][0-9])?$');
+    const timePattern = new RegExp('^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$');
     if (!timePattern.test(time)) {
         throw new WyinFeedError('given time does not match hh:mm format');
     }

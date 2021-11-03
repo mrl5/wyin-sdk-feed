@@ -1,0 +1,23 @@
+stages:
+  - release
+
+release_gitlab_registry:
+  stage: release
+  needs: [build_dist]
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^release-v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/'
+      # https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+  cache:
+    key: "$CI_PIPELINE_ID-dist"
+    paths:
+      - dist
+    policy: pull
+  variables:
+    SCOPE: $CI_PROJECT_NAMESPACE
+  before_script:
+    - rm -fv CHANGELOG.md README.md LICENSE
+  script:
+    - echo '' > .npmrc
+    - npm config set "@${SCOPE}:registry" "https://${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/"
+    - npm config set --  "//${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken" $CI_JOB_TOKEN
+    - npm publish

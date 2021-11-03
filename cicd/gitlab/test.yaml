@@ -1,21 +1,31 @@
 stages:
   - test
 
+audit:
+  stage: test
+  needs: []
+  script:
+    - yarn audit --groups dependencies
+
 lint:
   stage: test
   needs: [install_deps]
   cache:
+    key: $CI_COMMIT_REF_SLUG
     paths:
       - node_modules
+    policy: pull
   script:
-    - yarn run lint
+    - yarn run lint:ci
 
 unit_test:
   stage: test
   needs: [install_deps]
   cache:
+    key: $CI_COMMIT_REF_SLUG
     paths:
       - node_modules
+    policy: pull
   script:
     - yarn run test:unit:cicd
   artifacts:

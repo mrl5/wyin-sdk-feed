@@ -65,7 +65,7 @@ describe('index.ts', function () {
         ];
         // eslint-disable-next-line mocha/no-setup-in-describe
         testCases.forEach((testCase) => {
-            it('should return not found object with proper code', async function () {
+            it(`should return not found object with proper code: case for year ${testCase[0]}`, async function () {
                 sandbox.replace(Date, 'now', sinon.fake.returns(Date.parse('2021')));
                 const [year, lang, expectedCode] = testCase;
                 const result = await getEventByYear(year, lang);
@@ -85,7 +85,7 @@ describe('index.ts', function () {
         ];
         // eslint-disable-next-line mocha/no-setup-in-describe
         testCases.forEach((testCase) => {
-            it('should return not found object with proper code', async function () {
+            it(`should return not found object with proper code: case for time ${testCase[0]}`, async function () {
                 sandbox.replace(Date, 'now', sinon.fake.returns(Date.parse('2021')));
                 const [time, lang, expectedCode] = testCase;
                 const result = await getEventByTime(time, lang);

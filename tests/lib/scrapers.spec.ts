@@ -130,7 +130,7 @@ describe('scrapers.ts', function () {
         yearPages.forEach((testCase) => {
             it(`should return random scrapped data randomly: case for year ${testCase[0]}`, function () {
                 const [, html] = testCase;
-                const results = [...Array(100).keys()].map(() => getRandomEventFromYearPage(html));
+                const results = Array.from({ length: 100 }).map(() => getRandomEventFromYearPage(html));
                 assert.strictEqual(
                     results.every((r) => r?.event === results[0]?.event),
                     false,

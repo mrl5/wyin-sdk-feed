@@ -3,6 +3,7 @@
 START_DIR="$PWD"
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 TARGET_DIR="$(dirname $SCRIPT_DIR)"
+PROJECT="wyin-sdk-feed"
 REMOTE_URI="git@gitlab.com:spio-wyin/wyin-sdk-feed.git"
 MASTER_BRANCH="master"
 
@@ -56,7 +57,7 @@ git_push() {
 }
 
 get_current_version() {
-    cat package.json | grep '"version":' | sort | tail -1 | cut -d':' -f2 | cut -d'"' -f2
+    yarn versions | grep $PROJECT | cut -d':' -f2 | cut -d"'" -f2
 }
 
 main

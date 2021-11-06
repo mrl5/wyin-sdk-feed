@@ -1,3 +1,12 @@
+## [1.0.1](https://gitlab.com/spio-wyin/wyin-sdk-feed/compare/v1.0.0...v1.0.1) (2021-11-06)
+
+
+### Bug Fixes
+
+* **types:** jsdoc improvement for tsoa integration ([48e85a4](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/48e85a4751aca3515f27a236ffd8b7b2c3c28fcf))
+
+
+
 # [1.0.0](https://gitlab.com/spio-wyin/wyin-sdk-feed/compare/v0.2.0...v1.0.0) (2021-11-06)
 
 

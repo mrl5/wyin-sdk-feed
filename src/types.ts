@@ -14,16 +14,39 @@ export interface NotFoundEvent {
 }
 export type NotFoundCodeEnum = 'NF001' | 'NF002' | 'NF003';
 
+/**
+ * 24-hour clock time
+ * @format HH:MM
+ * @pattern ^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$
+ */
 export type Time = string;
+export const timePattern = '^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$';
+
+/**
+ * Common era year
+ * @isInt tsoa keyword
+ * @format int32
+ * @link https://tsoa-community.github.io/docs/annotations.html#numeric
+ */
 export type Year = number;
+
+/**
+ * Roman number
+ */
 export type Century = string;
+
 export type Html = string;
+
 export type ScrappedData = {
     event: string;
     category?: string;
 };
 
-export type Language =  // https://commons.wikimedia.org/w/api.php?action=sitematrix&smtype=language
+/**
+ * Language supported by wikipedia
+ * @link https://commons.wikimedia.org/w/api.php?action=sitematrix&smtype=language
+ */
+export type Language =
     | 'aa'
     | 'ab'
     | 'ace'

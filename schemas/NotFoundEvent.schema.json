@@ -20,6 +20,8 @@
             "$ref": "#/definitions/NotFoundCodeEnum"
         },
         "year": {
+            "description": "Common era year",
+            "format": "int32",
             "type": "number"
         }
     },

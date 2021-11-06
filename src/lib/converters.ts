@@ -1,5 +1,5 @@
 import romans from 'romans';
-import { Time, Year, Century } from '../types';
+import { Time, Year, Century, timePattern } from '../types';
 import { WyinFeedError, FutureYearError, BeforeCommonEraError } from '../errors';
 
 export function convertTimeToYear(time: Time): Year {
@@ -15,8 +15,8 @@ export function convertYearToCentury(year: Year): Century {
 }
 
 function throwOnInvalidTime(time: Time): void {
-    const timePattern = new RegExp('^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$');
-    if (!timePattern.test(time)) {
+    const timeRegex = new RegExp(timePattern);
+    if (!timeRegex.test(time)) {
         throw new WyinFeedError('given time does not match hh:mm format');
     }
 }

@@ -1,5 +1,5 @@
-import { Language, Time, Year, SingleHistoryEvent, NotFoundEvent } from './types';
-import { NotFoundError } from './errors';
+import { Language, Time, Year, SingleHistoryEvent, NotFoundEvent, NotFoundCodeEnum } from './types';
+import * as errors from './errors';
 import { convertTimeToYear } from './lib/converters';
 import { CenturyAndYearTitles, getWikipediaTitlesForCenturyAndYear } from './lib/wikidataApiService';
 import { WikipediaApiQuery } from './lib/wikipediaApi';
@@ -8,7 +8,7 @@ import { getYearEventFromCenturyPage, getRandomEventFromYearPage } from './lib/s
 
 type Response = SingleHistoryEvent | NotFoundEvent;
 
-export { Language, NotFoundEvent, NotFoundError, SingleHistoryEvent, Time, Year };
+export { Language, NotFoundEvent, SingleHistoryEvent, Time, Year, NotFoundCodeEnum, errors };
 
 export async function getEventByTime(time: Time, lang: Language, throwOnNotFound = false): Promise<Response> {
     const year = convertTimeToYear(time);
@@ -34,7 +34,7 @@ export async function getEventByYear(year: Year, lang: Language, throwOnNotFound
             source,
         };
     } catch (err) {
-        if (err instanceof NotFoundError) {
+        if (err instanceof errors.NotFoundError) {
             err.year = year;
             if (!throwOnNotFound) {
                 return {

@@ -1,26 +1,33 @@
-import { Language, Time, Year, SingleHistoryEvent, NotFoundEvent, NotFoundCodeEnum } from './types';
-import * as errors from './errors';
+import { Language, Time, Year, SingleHistoryEvent, NotFoundEvent } from './types';
+import { NotFoundError } from './errors';
 import { convertTimeToYear } from './lib/converters';
 import { CenturyAndYearTitles, getWikipediaTitlesForCenturyAndYear } from './lib/wikidataApiService';
 import { WikipediaApiQuery } from './lib/wikipediaApi';
 import { query, getWikiPageContent } from './lib/wikipediaApiService';
 import { getYearEventFromCenturyPage, getRandomEventFromYearPage } from './lib/scrapers';
 
-type Response = SingleHistoryEvent | NotFoundEvent;
-
-export { Language, NotFoundEvent, SingleHistoryEvent, Time, Year, NotFoundCodeEnum, errors };
-
-export async function getEventByTime(time: Time, lang: Language, throwOnNotFound = false): Promise<Response> {
+export async function getEventByTime(
+    time: Time,
+    lang: Language,
+    throwOnNotFound = false,
+): Promise<SingleHistoryEvent | NotFoundEvent> {
     const year = convertTimeToYear(time);
     return getEventByYear(year, lang, throwOnNotFound);
 }
 
-export async function getEventByRandom(lang: Language, throwOnNotFound = false): Promise<Response> {
+export async function getEventByRandom(
+    lang: Language,
+    throwOnNotFound = false,
+): Promise<SingleHistoryEvent | NotFoundEvent> {
     const year = getRandomYear();
     return getEventByYear(year, lang, throwOnNotFound);
 }
 
-export async function getEventByYear(year: Year, lang: Language, throwOnNotFound = false): Promise<Response> {
+export async function getEventByYear(
+    year: Year,
+    lang: Language,
+    throwOnNotFound = false,
+): Promise<SingleHistoryEvent | NotFoundEvent> {
     try {
         const titles = await getWikipediaTitlesForCenturyAndYear(year, lang);
         const [centuryTitle, yearTitle] = titles;
@@ -34,7 +41,7 @@ export async function getEventByYear(year: Year, lang: Language, throwOnNotFound
             source,
         };
     } catch (err) {
-        if (err instanceof errors.NotFoundError) {
+        if (err instanceof NotFoundError) {
             err.year = year;
             if (!throwOnNotFound) {
                 return {

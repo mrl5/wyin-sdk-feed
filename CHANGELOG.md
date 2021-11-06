@@ -1,3 +1,17 @@
+# [0.2.0](https://gitlab.com/spio-wyin/wyin-sdk-feed/compare/v0.1.1...v0.2.0) (2021-11-06)
+
+
+### Bug Fixes
+
+* **converters:** valid time format is HH:MM ([7b563e2](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/7b563e2f63194a2d16d2924117ff8cd08f6367ab))
+
+
+### Features
+
+* opt for throwing exceptions ([d9622a5](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/d9622a5bd98b42719095844bdabdd73e4736af1d))
+
+
+
 ## [0.1.1](https://gitlab.com/spio-wyin/wyin-sdk-feed/compare/v0.1.0...v0.1.1) (2021-11-03)
 
 

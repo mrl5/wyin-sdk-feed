@@ -3,7 +3,7 @@
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 SCHEMAS_FOLDER="schemas"
 SCHEMAS_DIR="$(dirname $SCRIPT_DIR)/$SCHEMAS_FOLDER"
-TYPES="SingleHistoryEvent NotFound Language"
+TYPES="SingleHistoryEvent NotFoundEvent Language"
 
 set -e -u -o pipefail
 

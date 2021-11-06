@@ -8,6 +8,7 @@ import NodeHttpAdapter from '@pollyjs/adapter-node-http';
 import { getEventByYear, getEventByTime } from '../src/index';
 import { Year, Language, Time } from '../src/types';
 import { NotFoundCodeEnum } from '../src/types';
+import { NotFoundError } from '../src/errors';
 
 chai.use(chaiAsPromised);
 const { assert, expect } = chai;
@@ -72,6 +73,9 @@ describe('index.ts', function () {
 
                 assert.strictEqual(result.year, year);
                 assert.strictEqual(result.code, expectedCode);
+
+                const fn = async () => getEventByYear(year, lang, true);
+                assert.isRejected(fn(), NotFoundError, expectedCode);
                 sandbox.restore();
             });
         });
@@ -92,6 +96,10 @@ describe('index.ts', function () {
 
                 assert.strictEqual(typeof result.year, 'number');
                 assert.strictEqual(result.code, expectedCode);
+
+                const throwOnNotFound = true;
+                const fn = async () => getEventByTime(time, lang, throwOnNotFound);
+                assert.isRejected(fn(), NotFoundError, expectedCode);
                 sandbox.restore();
             });
         });

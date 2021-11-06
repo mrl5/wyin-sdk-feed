@@ -1,4 +1,4 @@
-import { Language, Time, Year, SingleHistoryEvent, NotFound } from './types';
+import { Language, Time, Year, SingleHistoryEvent, NotFoundEvent } from './types';
 import { NotFoundError } from './errors';
 import { convertTimeToYear } from './lib/converters';
 import { CenturyAndYearTitles, getWikipediaTitlesForCenturyAndYear } from './lib/wikidataApiService';
@@ -6,19 +6,21 @@ import { WikipediaApiQuery } from './lib/wikipediaApi';
 import { query, getWikiPageContent } from './lib/wikipediaApiService';
 import { getYearEventFromCenturyPage, getRandomEventFromYearPage } from './lib/scrapers';
 
-type Response = SingleHistoryEvent | NotFound;
+type Response = SingleHistoryEvent | NotFoundEvent;
 
-export async function getEventByTime(time: Time, lang: Language): Promise<Response> {
+export { Language, NotFoundEvent, NotFoundError, SingleHistoryEvent, Time, Year };
+
+export async function getEventByTime(time: Time, lang: Language, throwOnNotFound = false): Promise<Response> {
     const year = convertTimeToYear(time);
-    return getEventByYear(year, lang);
+    return getEventByYear(year, lang, throwOnNotFound);
 }
 
-export async function getEventByRandom(lang: Language): Promise<Response> {
+export async function getEventByRandom(lang: Language, throwOnNotFound = false): Promise<Response> {
     const year = getRandomYear();
-    return getEventByYear(year, lang);
+    return getEventByYear(year, lang, throwOnNotFound);
 }
 
-export async function getEventByYear(year: Year, lang: Language): Promise<Response> {
+export async function getEventByYear(year: Year, lang: Language, throwOnNotFound = false): Promise<Response> {
     try {
         const titles = await getWikipediaTitlesForCenturyAndYear(year, lang);
         const [centuryTitle, yearTitle] = titles;
@@ -33,11 +35,14 @@ export async function getEventByYear(year: Year, lang: Language): Promise<Respon
         };
     } catch (err) {
         if (err instanceof NotFoundError) {
-            return {
-                year,
-                body: err.message,
-                code: err.code,
-            };
+            err.year = year;
+            if (!throwOnNotFound) {
+                return {
+                    year,
+                    body: err.message,
+                    code: err.code,
+                };
+            }
         }
         throw err;
     }

@@ -6,7 +6,7 @@ export interface SingleHistoryEvent {
     [k: string]: unknown;
 }
 
-export interface NotFound {
+export interface NotFoundEvent {
     year: Year;
     body: string;
     code: NotFoundCodeEnum;

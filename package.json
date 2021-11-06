@@ -31,6 +31,7 @@
     "prepare": "git config --local core.hooksPath .githooks || echo 'Could not set git hooks'",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "recommended-bump": "conventional-recommended-bump -p angular",
+    "docs": "yarn run typedoc src/",
     "build": "tsc",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --fix && tsc --noEmit --pretty",
     "lint:ci": "eslint '*/**/*.{js,ts,tsx}' --max-warnings=0 && tsc --noEmit --pretty",
@@ -81,6 +82,7 @@
     "sinon": "^11.1.2",
     "source-map-support": "^0.5.20",
     "ts-node": "^10.2.1",
+    "typedoc": "^0.22.7",
     "typescript": "^4.4.3",
     "typescript-json-schema": "^0.51.0"
   },

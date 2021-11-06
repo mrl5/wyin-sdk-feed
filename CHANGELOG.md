@@ -3,12 +3,12 @@
 
 ### Bug Fixes
 
-* **docs:** improve tsoa integration and docs output ([42f32ec](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/42f32ecfbf091117dee92361b6309f01e1c4f1a9))
+* **types:** improve tsoa integration and docs output ([42f32ec](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/42f32ecfbf091117dee92361b6309f01e1c4f1a9))
 
 
 ### BREAKING CHANGES
 
-* **docs:** all errors exported as an `errors` namespace
+* **types:** all errors exported as an `errors` namespace
 
 
 

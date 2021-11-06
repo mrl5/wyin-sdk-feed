@@ -24,7 +24,7 @@ export const timePattern = '^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$';
 
 /**
  * Common era year
- * @isInt tsoa keyword
+ * @isInt year should be an integer
  * @format int32
  * @link https://tsoa-community.github.io/docs/annotations.html#numeric
  */

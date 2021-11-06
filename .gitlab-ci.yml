@@ -36,3 +36,6 @@ include:
 
 semgrep-sast:
   cache: {}
+
+secret_detection:
+  cache: {}

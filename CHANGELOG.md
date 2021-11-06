@@ -1,3 +1,17 @@
+# [1.0.0](https://gitlab.com/spio-wyin/wyin-sdk-feed/compare/v0.2.0...v1.0.0) (2021-11-06)
+
+
+### Bug Fixes
+
+* **docs:** improve tsoa integration and docs output ([42f32ec](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/42f32ecfbf091117dee92361b6309f01e1c4f1a9))
+
+
+### BREAKING CHANGES
+
+* **docs:** all errors exported as an `errors` namespace
+
+
+
 # [0.2.0](https://gitlab.com/spio-wyin/wyin-sdk-feed/compare/v0.1.1...v0.2.0) (2021-11-06)
 
 

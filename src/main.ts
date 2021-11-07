@@ -6,28 +6,35 @@ import { WikipediaApiQuery } from './lib/wikipediaApi';
 import { query, getWikiPageContent } from './lib/wikipediaApiService';
 import { getYearEventFromCenturyPage, getRandomEventFromYearPage } from './lib/scrapers';
 
+export interface Settings {
+    throwOnNotFound: boolean;
+}
+
+export const defaultSettings = { throwOnNotFound: false };
+
 export async function getEventByTime(
     time: Time,
     lang: Language,
-    throwOnNotFound = false,
+    settings: Settings = defaultSettings,
 ): Promise<SingleHistoryEvent | NotFoundEvent> {
     const year = convertTimeToYear(time);
-    return getEventByYear(year, lang, throwOnNotFound);
+    return getEventByYear(year, lang, settings);
 }
 
 export async function getEventByRandom(
     lang: Language,
-    throwOnNotFound = false,
+    settings: Settings = defaultSettings,
 ): Promise<SingleHistoryEvent | NotFoundEvent> {
     const year = getRandomYear();
-    return getEventByYear(year, lang, throwOnNotFound);
+    return getEventByYear(year, lang, settings);
 }
 
 export async function getEventByYear(
     year: Year,
     lang: Language,
-    throwOnNotFound = false,
+    settings: Settings = defaultSettings,
 ): Promise<SingleHistoryEvent | NotFoundEvent> {
+    const { throwOnNotFound } = settings;
     try {
         const titles = await getWikipediaTitlesForCenturyAndYear(year, lang);
         const [centuryTitle, yearTitle] = titles;

@@ -74,7 +74,7 @@ describe('index.ts', function () {
                 assert.strictEqual(result.year, year);
                 assert.strictEqual(result.code, expectedCode);
 
-                const fn = async () => getEventByYear(year, lang, true);
+                const fn = async () => getEventByYear(year, lang, { throwOnNotFound: true });
                 assert.isRejected(fn(), NotFoundError, expectedCode);
                 sandbox.restore();
             });
@@ -97,8 +97,7 @@ describe('index.ts', function () {
                 assert.strictEqual(typeof result.year, 'number');
                 assert.strictEqual(result.code, expectedCode);
 
-                const throwOnNotFound = true;
-                const fn = async () => getEventByTime(time, lang, throwOnNotFound);
+                const fn = async () => getEventByTime(time, lang, { throwOnNotFound: true });
                 assert.isRejected(fn(), NotFoundError, expectedCode);
                 sandbox.restore();
             });

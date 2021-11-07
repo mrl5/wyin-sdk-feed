@@ -9,6 +9,10 @@ For more info regarding motivation and background check
 https://gitlab.com/spio-wyin/wyin-fe-webapp/-/issues/3
 
 
+## Docs
+https://spio-wyin.gitlab.io/wyin-sdk-feed/
+
+
 ## Changelog
 Check out [CHANGELOG](CHANGELOG.md)
 

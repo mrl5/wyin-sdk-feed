@@ -29,6 +29,7 @@ include:
   - local: '/cicd/gitlab/test.yaml'
   - local: '/cicd/gitlab/build.yaml'
   - local: '/cicd/gitlab/release.yaml'
+  - local: '/cicd/gitlab/docs.yaml'
 
   - template: Security/SAST.gitlab-ci.yml
   - template: Security/Dependency-Scanning.gitlab-ci.yml

@@ -1,6 +1,9 @@
 pages:
   stage: .post
   needs: [release_gitlab_registry]
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^release-v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/'
+      # https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
   cache:
     - key: $CI_COMMIT_REF_SLUG
       paths:

@@ -1,3 +1,21 @@
+# [2.0.0](https://gitlab.com/spio-wyin/wyin-sdk-feed/compare/v1.0.1...v2.0.0) (2021-11-07)
+
+
+### Code Refactoring
+
+* **exports:** clean-up of module exports ([f4051b7](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/f4051b71fe6dffc1c4db23ad1472b61ae2a69cdf))
+* move boolean opts into settings object ([a9e216f](https://gitlab.com/spio-wyin/wyin-sdk-feed/commit/a9e216fc893bccec7b37da2d1ba3160c4aeeb3e9))
+
+
+### BREAKING CHANGES
+
+* main functions accept optional settings object instead
+of optional boolean flag for throwing exceptions (introduced in d9622a5bd9)
+* **exports:** all errors exported individually
+(reverts breaking change from commit 42f32ecf)
+
+
+
 ## [1.0.1](https://gitlab.com/spio-wyin/wyin-sdk-feed/compare/v1.0.0...v1.0.1) (2021-11-06)
 
 

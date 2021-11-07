@@ -1,0 +1,15 @@
+pages:
+  stage: .post
+  needs: [release_gitlab_registry]
+  cache:
+    - key: $CI_COMMIT_REF_SLUG
+      paths:
+        - node_modules
+      policy: pull
+  before_script:
+    - rm -rf public
+  script:
+    - yarn run docs:gitlab
+  artifacts:
+    paths:
+      - public

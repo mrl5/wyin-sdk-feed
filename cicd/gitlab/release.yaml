@@ -15,7 +15,7 @@ release_gitlab_registry:
   variables:
     SCOPE: $CI_PROJECT_NAMESPACE
   before_script:
-    - rm -fv CHANGELOG.md README.md LICENSE
+    - rm -fv CHANGELOG.md README.md
   script:
     - echo '' > .npmrc
     - npm config set "@${SCOPE}:registry" "https://${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/"
